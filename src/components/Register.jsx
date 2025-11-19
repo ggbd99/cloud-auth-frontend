@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { API_URL } from '../config';
 import './Login.css';
 
@@ -8,6 +9,7 @@ export default function Register() {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
+    const { adminLogin } = useAuth();
 
     const handleRegister = async (credentialResponse) => {
         try {
@@ -20,8 +22,12 @@ export default function Register() {
             const data = await response.json();
 
             if (response.ok) {
-                setSuccess('Registration successful! Redirecting to login...');
-                setTimeout(() => navigate('/login'), 2000);
+                setSuccess('Registration successful! Logging you in...');
+                // Auto-login after registration
+                const loginResult = await adminLogin(credentialResponse.credential);
+                if (loginResult.success) {
+                    navigate('/dashboard');
+                }
             } else {
                 setError(data.error || 'Registration failed');
             }
