@@ -4,6 +4,38 @@
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative floating shapes */
+.login-container::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsla(235, 68%, 62%, 0.15) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+    pointer-events: none;
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, hsla(192, 82%, 51%, 0.12) 0%, transparent 70%);
+    bottom: -150px;
+    left: -50px;
+    pointer-events: none;
+}
+
+.login-content-wrapper {
+    position: relative;
+    z-index: 1;
 }
 
 .login-card {
@@ -12,7 +44,7 @@
     padding: 3rem 3.5rem;
     box-shadow: var(--shadow-xl);
     text-align: center;
-    max-width: 450px;
+    max-width: 480px;
     width: 100%;
     border: 1px solid var(--card-border);
     position: relative;
@@ -45,6 +77,22 @@
     }
 }
 
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.lock-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsla(235, 68%, 62%, 0.1);
+    border-radius: 16px;
+    color: var(--primary-light);
+}
+
 .login-card h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -56,7 +104,7 @@
 .subtitle {
     color: var(--text-secondary);
     font-size: 0.95rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     line-height: 1.5;
 }
 
@@ -64,6 +112,58 @@
     display: flex;
     justify-content: center;
     margin: 2rem 0;
+}
+
+/* Custom Google Button Styling */
+.google-login-wrapper>div {
+    width: 100% !important;
+}
+
+.google-login-wrapper iframe {
+    border-radius: 10px !important;
+}
+
+.google-login-wrapper button,
+.google-login-wrapper [role="button"] {
+    width: 100% !important;
+    border-radius: 10px !important;
+    padding: 0.875rem 1.5rem !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: var(--shadow-md) !important;
+    border: 1px solid var(--card-border-hover) !important;
+}
+
+.google-login-wrapper button:hover,
+.google-login-wrapper [role="button"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.login-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: hsla(235, 68%, 62%, 0.05);
+    border-radius: 12px;
+    border: 1px solid hsla(235, 68%, 62%, 0.1);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.benefit-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
 }
 
 .error-message {
@@ -149,5 +249,10 @@
 
     .login-card h1 {
         font-size: 1.75rem;
+    }
+
+    .lock-icon {
+        width: 56px;
+        height: 56px;
     }
 }
