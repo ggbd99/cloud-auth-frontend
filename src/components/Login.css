@@ -1,9 +1,10 @@
 .login-container {
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
@@ -44,8 +45,8 @@
     padding: 3rem 3.5rem;
     box-shadow: var(--shadow-xl);
     text-align: center;
-    max-width: 480px;
-    width: 100%;
+    max-width: 520px;
+    width: 90%;
     border: 1px solid var(--card-border);
     position: relative;
     animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -108,37 +109,45 @@
     line-height: 1.5;
 }
 
-.google-login-wrapper {
+/* Custom Google Button */
+.google-login-button {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    background: white;
+    color: #1f1f1f;
+    border: 1px solid var(--card-border-hover);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
     margin: 2rem 0;
 }
 
-/* Custom Google Button Styling */
-.google-login-wrapper>div {
-    width: 100% !important;
+.google-login-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: #f8f8f8;
 }
 
-.google-login-wrapper iframe {
-    border-radius: 10px !important;
+.google-login-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: var(--shadow-md);
 }
 
-.google-login-wrapper button,
-.google-login-wrapper [role="button"] {
-    width: 100% !important;
-    border-radius: 10px !important;
-    padding: 0.875rem 1.5rem !important;
-    font-weight: 600 !important;
-    font-size: 0.95rem !important;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    box-shadow: var(--shadow-md) !important;
-    border: 1px solid var(--card-border-hover) !important;
+.google-login-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.google-login-wrapper button:hover,
-.google-login-wrapper [role="button"]:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: var(--shadow-lg) !important;
+.google-icon {
+    flex-shrink: 0;
 }
 
 .login-benefits {
@@ -242,9 +251,14 @@
 
 /* Responsive Design */
 @media (max-width: 640px) {
+    .login-container {
+        padding: 1rem;
+    }
+
     .login-card {
         padding: 2rem 1.75rem;
         border-radius: 16px;
+        width: 95%;
     }
 
     .login-card h1 {
