@@ -33,7 +33,7 @@ export default function Register() {
     return (
         <div className="login-container">
             <div className="login-card">
-                <h1>Register as Admin</h1>
+                <h1>Register</h1>
                 <p className="subtitle">Sign up with your Google account</p>
 
                 {error && <div className="error-message">{error}</div>}

@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <div className="home-container">
             <div className="home-card">
-                <h1>🔐 Device Whitelist Auth</h1>
+                <h1>Device Whitelist Auth</h1>
                 <p className="home-subtitle">Secure device authentication for your application</p>
 
                 <div className="home-description">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
+import './Login.css';
 
 export default function Login() {
     const [error, setError] = useState('');
@@ -23,24 +24,27 @@ export default function Login() {
     };
 
     return (
-        <div className="auth-container">
-            <h2>Admin Login</h2>
-            <p style={{ color: '#888', fontSize: '0.9rem' }}>Device Whitelist Management</p>
-            {error && <div className="error-message">{error}</div>}
+        <div className="login-container">
+            <div className="login-card">
+                <h1>Login</h1>
+                <p className="subtitle">Device Whitelist Management</p>
 
-            <div style={{ marginTop: '30px', display: 'flex', justifyContent: 'center' }}>
-                <GoogleLogin
-                    onSuccess={handleSuccess}
-                    onError={handleError}
-                    theme="filled_black"
-                    text="signin_with"
-                    shape="pill"
-                />
+                {error && <div className="error-message">{error}</div>}
+
+                <div className="google-login-wrapper">
+                    <GoogleLogin
+                        onSuccess={handleSuccess}
+                        onError={handleError}
+                        theme="filled_blue"
+                        size="large"
+                        text="signin_with"
+                    />
+                </div>
+
+                <p className="register-link">
+                    Don't have an account? <a href="/register">Register here</a>
+                </p>
             </div>
-
-            <p className="register-link" style={{ marginTop: '20px', textAlign: 'center' }}>
-                Don't have an account? <a href="/register">Register here</a>
-            </p>
         </div>
     );
 }
