@@ -37,6 +37,10 @@ export default function Login() {
                     shape="pill"
                 />
             </div>
+
+            <p className="register-link" style={{ marginTop: '20px', textAlign: 'center' }}>
+                Don't have an account? <a href="/register">Register here</a>
+            </p>
         </div>
     );
 }
