@@ -1,28 +1,36 @@
 :root {
-  /* Professional Color Palette */
-  --primary: hsl(242, 65%, 58%);
-  --primary-dark: hsl(242, 65%, 48%);
-  --primary-light: hsl(242, 65%, 68%);
+  /* Refined Color Palette - Sophisticated and Professional */
+  --primary: hsl(235, 68%, 62%);
+  --primary-dark: hsl(235, 68%, 52%);
+  --primary-light: hsl(235, 68%, 72%);
 
-  --accent: hsl(200, 75%, 55%);
-  --success: hsl(142, 65%, 45%);
-  --error: hsl(0, 70%, 55%);
-  --warning: hsl(40, 85%, 55%);
+  --accent: hsl(192, 82%, 51%);
+  --accent-dark: hsl(192, 82%, 41%);
 
-  /* Neutral Palette */
-  --bg-dark: hsl(220, 18%, 10%);
-  --bg-darker: hsl(220, 20%, 8%);
-  --card-bg: hsl(220, 18%, 13%);
-  --card-border: hsl(220, 15%, 20%);
+  --success: hsl(142, 71%, 45%);
+  --error: hsl(0, 84%, 60%);
+  --warning: hsl(45, 93%, 47%);
 
-  --text-primary: hsl(0, 0%, 95%);
-  --text-secondary: hsl(0, 0%, 65%);
-  --text-muted: hsl(0, 0%, 45%);
+  /* Advanced Neutral Palette */
+  --bg-base: hsl(222, 24%, 7%);
+  --bg-elevated: hsl(222, 20%, 10%);
+  --card-bg: hsl(222, 18%, 12%);
+  --card-border: hsl(222, 16%, 18%);
+  --card-border-hover: hsl(222, 16%, 24%);
 
-  /* Subtle Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --text-primary: hsl(0, 0%, 98%);
+  --text-secondary: hsl(0, 0%, 72%);
+  --text-muted: hsl(0, 0%, 52%);
+
+  /* Professional Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.55);
+
+  /* Gradient Accents */
+  --gradient-primary: linear-gradient(135deg, hsl(235, 68%, 62%) 0%, hsl(245, 68%, 58%) 100%);
+  --gradient-accent: linear-gradient(135deg, hsl(192, 82%, 51%) 0%, hsl(202, 82%, 48%) 100%);
 }
 
 * {
@@ -35,14 +43,16 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen', 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary);
-  background: var(--bg-darker);
+  background: var(--bg-base);
   position: relative;
   overflow-x: hidden;
 }
 
-/* Subtle Background Pattern */
+/* Sophisticated Background Pattern */
 body::before {
   content: '';
   position: fixed;
@@ -50,14 +60,32 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(circle at 20% 50%, hsla(242, 65%, 58%, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, hsla(200, 75%, 55%, 0.03) 0%, transparent 50%);
-  z-index: -1;
+  background-image:
+    radial-gradient(at 15% 20%, hsla(235, 68%, 62%, 0.08) 0, transparent 45%),
+    radial-gradient(at 85% 75%, hsla(192, 82%, 51%, 0.06) 0, transparent 40%),
+    radial-gradient(at 50% 50%, hsla(245, 68%, 58%, 0.04) 0, transparent 55%);
+  z-index: 0;
   pointer-events: none;
 }
 
+/* Mesh Gradient Overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.01) 2px, rgba(255, 255, 255, 0.01) 4px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
 .app-wrapper {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -69,23 +97,38 @@ body::before {
   justify-content: center;
 }
 
-/* Auth Container - Login Page */
+/* Premium Card Styles */
 .auth-container {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   padding: 3rem;
-  border-radius: 16px;
-  box-shadow: var(--shadow-lg);
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
   max-width: 480px;
   width: 100%;
   text-align: center;
-  animation: slideUp 0.4s ease-out;
+  position: relative;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+}
+
+/* Subtle top border accent */
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.6;
 }
 
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
 
   to {
@@ -99,11 +142,14 @@ body::before {
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .auth-container p {
   color: var(--text-secondary);
   margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* Form Elements */
@@ -116,108 +162,131 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
+  letter-spacing: 0.01em;
 }
 
 input {
   width: 100%;
   padding: 0.875rem 1rem;
-  border: 1px solid var(--card-border);
-  border-radius: 8px;
-  background: var(--bg-dark);
+  border: 1.5px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--bg-elevated);
   color: var(--text-primary);
   font-family: inherit;
   font-size: 0.95rem;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input:focus {
   outline: none;
   border-color: var(--primary);
   background: var(--card-bg);
+  box-shadow: 0 0 0 3px hsla(235, 68%, 62%, 0.1);
 }
 
 input::placeholder {
   color: var(--text-muted);
 }
 
-/* Buttons */
+/* Premium Button Styles */
 button {
   width: 100%;
   padding: 0.875rem 1.5rem;
-  background: var(--primary);
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   font-size: 0.95rem;
   font-family: inherit;
-  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
 }
 
 button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 button:active {
   transform: translateY(0);
+  box-shadow: var(--shadow-md);
 }
 
-/* Messages */
+/* Refined Messages */
 .error-message {
-  color: var(--error);
-  background: hsla(0, 70%, 55%, 0.1);
-  border: 1px solid hsla(0, 70%, 55%, 0.2);
+  color: hsl(0, 84%, 95%);
+  background: hsla(0, 84%, 60%, 0.15);
+  border: 1px solid hsla(0, 84%, 60%, 0.25);
   padding: 0.875rem 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.4;
 }
 
 .success-message {
-  color: var(--success);
-  background: hsla(142, 65%, 45%, 0.1);
-  border: 1px solid hsla(142, 65%, 45%, 0.2);
+  color: hsl(142, 71%, 95%);
+  background: hsla(142, 71%, 45%, 0.15);
+  border: 1px solid hsla(142, 71%, 45%, 0.25);
   padding: 0.875rem 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.4;
 }
 
-/* Links */
+/* Refined Links */
 a {
-  color: var(--primary);
+  color: var(--primary-light);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   font-weight: 500;
+  position: relative;
 }
 
 a:hover {
-  color: var(--primary-light);
+  color: var(--primary);
 }
 
-/* Scrollbar Styling */
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--gradient-primary);
+  transition: width 0.25s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Premium Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-darker);
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--card-border);
   border-radius: 5px;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--card-border-hover);
 }
 
 /* Responsive Design */
@@ -228,5 +297,10 @@ a:hover {
 
   .auth-container {
     padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .auth-container h2 {
+    font-size: 1.75rem;
   }
 }
