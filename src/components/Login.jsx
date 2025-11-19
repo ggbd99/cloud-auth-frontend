@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import './Login.css';
 
 export default function Login() {
@@ -9,6 +9,7 @@ export default function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const { adminLogin } = useAuth();
     const navigate = useNavigate();
+    const googleButtonRef = useRef(null);
 
     const handleSuccess = async (credentialResponse) => {
         setError('');
@@ -22,49 +23,19 @@ export default function Login() {
         }
     };
 
-    const login = useGoogleLogin({
-        onSuccess: async (tokenResponse) => {
-            try {
-                setIsLoading(true);
-                // Exchange the access token for user info
-                const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                    headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-                });
-                const userInfo = await userInfoResponse.json();
+    const handleError = () => {
+        setError('Google Login Failed');
+        setIsLoading(false);
+    };
 
-                // Get ID token by making another request
-                const response = await fetch('https://oauth2.googleapis.com/token', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({
-                        code: tokenResponse.code,
-                        client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-                        redirect_uri: window.location.origin,
-                        grant_type: 'authorization_code',
-                    }),
-                });
-                const data = await response.json();
-
-                if (data.id_token) {
-                    const result = await adminLogin(data.id_token);
-                    if (result.success) {
-                        navigate('/dashboard');
-                    } else {
-                        setError(result.error);
-                    }
-                }
-                setIsLoading(false);
-            } catch (err) {
-                setError('Login failed: ' + err.message);
-                setIsLoading(false);
-            }
-        },
-        onError: () => {
-            setError('Google Login Failed');
-            setIsLoading(false);
-        },
-        flow: 'auth-code',
-    });
+    const handleCustomButtonClick = () => {
+        // Trigger the hidden Google button
+        const googleButton = googleButtonRef.current?.querySelector('div[role="button"]');
+        if (googleButton) {
+            setIsLoading(true);
+            googleButton.click();
+        }
+    };
 
     return (
         <div className="login-container">
@@ -83,9 +54,21 @@ export default function Login() {
 
                     {error && <div className="error-message">{error}</div>}
 
+                    {/* Hidden Google Login Button */}
+                    <div ref={googleButtonRef} style={{ display: 'none' }}>
+                        <GoogleLogin
+                            onSuccess={handleSuccess}
+                            onError={handleError}
+                            theme="filled_blue"
+                            size="large"
+                            text="signin_with"
+                        />
+                    </div>
+
+                    {/* Custom Styled Button */}
                     <button
                         className="google-login-button"
-                        onClick={() => login()}
+                        onClick={handleCustomButtonClick}
                         disabled={isLoading}
                     >
                         <svg className="google-icon" viewBox="0 0 24 24" width="20" height="20">
