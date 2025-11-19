@@ -5,6 +5,32 @@
     animation: fadeIn 0.4s ease-out;
 }
 
+/* Logo in top left */
+.dashboard-logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.dashboard-logo::after {
+    content: none;
+}
+
+.dashboard-logo:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -210,6 +236,12 @@ td strong {
 }
 
 @media (max-width: 768px) {
+    .dashboard-logo {
+        font-size: 1.25rem;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
     .dashboard-header {
         flex-direction: column;
         gap: 1rem;

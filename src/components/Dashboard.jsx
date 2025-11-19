@@ -99,6 +99,7 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard-container">
+            <a href="/" className="dashboard-logo">CLOUD AUTH</a>
             <div className="dashboard-header">
                 <div>
                     <h1>Device Whitelist Manager</h1>

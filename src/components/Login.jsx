@@ -39,6 +39,7 @@ export default function Login() {
 
     return (
         <div className="login-container">
+            <a href="/" className="logo-link">CLOUD AUTH</a>
             <div className="login-content-wrapper">
                 <div className="login-card">
                     <div className="login-header">

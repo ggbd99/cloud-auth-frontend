@@ -7,6 +7,7 @@ export default function Home() {
 
     return (
         <div className="home-container">
+            <a href="/" className="home-logo">CLOUD AUTH</a>
             <div className="home-hero">
                 <div className="hero-badge">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">

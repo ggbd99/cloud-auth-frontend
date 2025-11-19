@@ -9,6 +9,32 @@
     overflow: hidden;
 }
 
+/* Logo in top left */
+.logo-link {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo-link::after {
+    content: none;
+}
+
+.logo-link:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.2);
+}
+
 /* Decorative floating shapes */
 .login-container::before {
     content: '';
@@ -251,6 +277,12 @@
 
 /* Responsive Design */
 @media (max-width: 640px) {
+    .logo-link {
+        font-size: 1.25rem;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
     .login-container {
         padding: 1rem;
     }
