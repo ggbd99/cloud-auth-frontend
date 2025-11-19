@@ -1,0 +1,292 @@
+.dashboard-container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 2rem;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header Section */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.dashboard-header p {
+    margin: 0.5rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.dashboard-header p strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.logout-btn {
+    background: var(--error);
+    width: auto;
+    padding: 0.75rem 2rem;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: hsl(0, 70%, 45%);
+    box-shadow: var(--shadow-md);
+}
+
+/* Add Device Form */
+.add-device-form {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.add-device-form h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.add-device-form form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.add-device-form input {
+    margin-bottom: 0;
+    background: var(--bg-dark);
+}
+
+.add-device-form button {
+    width: auto;
+    margin-top: 0;
+    padding: 0.875rem 2rem;
+    white-space: nowrap;
+}
+
+/* Devices List */
+.devices-list {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.devices-list h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.no-devices {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 1rem;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+thead {
+    background: var(--bg-dark);
+}
+
+th {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--card-border);
+}
+
+td {
+    padding: 1.25rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.2s ease;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: var(--bg-dark);
+}
+
+/* Hash Cell with Monospace Font */
+.hash-cell {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--accent);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: hsla(200, 75%, 55%, 0.08);
+    border-radius: 6px;
+    border: 1px solid hsla(200, 75%, 55%, 0.15);
+}
+
+/* Action Buttons */
+.delete-btn {
+    background: var(--error);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    width: auto;
+    margin: 0;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: hsl(0, 70%, 45%);
+    box-shadow: var(--shadow-sm);
+}
+
+.delete-btn:active {
+    transform: translateY(0);
+}
+
+/* Badge Styling */
+td strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .add-device-form form {
+        grid-template-columns: 1fr;
+    }
+
+    .add-device-form button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .logout-btn {
+        width: 100%;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th,
+    td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .hash-cell {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+
+    .dashboard-header,
+    .add-device-form,
+    .devices-list {
+        padding: 1.5rem;
+    }
+
+    /* Stack table cells vertically on mobile */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--card-border);
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+}
